@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * Created by KURT on 29.06.2015.
  */
@@ -54,7 +57,6 @@ public class CalculationFragment extends Fragment {
 		mSecondsET = (EditText) v.findViewById(R.id.secondsEditText);
 
 
-//		tv.setText("THIS IS DA CALCULATION");
 		mCalculateResultFAB = (FloatingActionButton) v.findViewById(R.id.calculateResultFAB);
 		mCalculateResultFAB.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -74,6 +76,13 @@ public class CalculationFragment extends Fragment {
 				mSecondsET.setText("");
 
 				mCalculateResultFAB.setClickable(false);
+
+				String textToShow = String.format("The result will be shown in %s second", seconds);
+				if (seconds > 1) {
+					textToShow = textToShow + "s";
+				}
+				Toast.makeText(getActivity(),textToShow, Toast.LENGTH_SHORT).show();
+
 				getActivity().startService(intent);
 			}
 		});
@@ -92,11 +101,13 @@ public class CalculationFragment extends Fragment {
 			double secondOp = arg1.getDoubleExtra("SECOND_OP", 0);
 
 			mCalculateResultFAB.setClickable(true);
-			String text = String.format("%s + %s = %s", firstOp, secondOp, datapassed);
+
+			String text = String.format("%s + %s = %s",
+					new BigDecimal(firstOp).setScale(6, RoundingMode.CEILING).stripTrailingZeros().toPlainString(),
+					new BigDecimal(secondOp).setScale(6, RoundingMode.CEILING).stripTrailingZeros().toPlainString(),
+					new BigDecimal(datapassed).setScale(6, RoundingMode.CEILING).stripTrailingZeros().toPlainString());
 			mResultTextView.setText(text);
 
-//			Toast.makeText(getActivity(),"Triggered by Service!\n"+ "Data passed: " +
-//							String.valueOf(datapassed),	Toast.LENGTH_LONG).show();
 
 		}
 

@@ -8,27 +8,15 @@
 				android:padding="8dp">
 
 
-	<TextView android:id="@+id/calculationTextView"
-			  android:layout_width="match_parent"
-			  android:layout_height="wrap_content"
-			  android:layout_marginBottom="32dp"
-			  android:gravity="left"
-			  android:text="Calculation with delay"
-			  android:textAppearance="?android:textAppearanceLarge"
-
-		/>
-
 	<android.support.v7.widget.CardView
 		android:id="@+id/operandsCardView"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/calculationTextView"
-		>
+		android:layout_height="wrap_content">
 		<TextView android:id="@+id/descriptionTextView"
 				  android:layout_width="match_parent"
 				  android:layout_height="wrap_content"
 				  android:layout_margin="8dp"
-				  android:text="Enter two numbers:"
+				  android:text="@string/enter_two_numbers"
 				  android:textAppearance="?android:textAppearanceMedium"/>
 
 		<LinearLayout
@@ -45,8 +33,7 @@
 				<EditText android:id="@+id/firstOperandEditText"
 						  android:layout_width="match_parent"
 						  android:layout_height="wrap_content"
-
-						  android:hint="1\'st operand"
+						  android:hint="@string/hint_1st"
 						  android:inputType="numberDecimal"
 						  android:maxLength="8"/>
 
@@ -60,9 +47,8 @@
 				<EditText android:id="@+id/secondOperandEditText"
 						  android:layout_width="match_parent"
 						  android:layout_height="wrap_content"
-						  android:layout_below="@id/calculationTextView"
 						  android:layout_toRightOf="@id/firstOperandEditText"
-						  android:hint="2\'nd operand"
+						  android:hint="@string/hint_2nd"
 						  android:inputType="numberDecimal"
 						  android:maxLength="8"/>
 			</com.wrapp.floatlabelededittext.FloatLabeledEditText>
@@ -81,7 +67,7 @@
 				  android:layout_width="match_parent"
 				  android:layout_height="wrap_content"
 				  android:layout_margin="8dp"
-				  android:text="Enter delay of calculations:"
+				  android:text="@string/enter_delay"
 				  android:textAppearance="?android:textAppearanceMedium"/>
 
 		<LinearLayout android:id="@+id/secondsLinearLayout"
@@ -100,7 +86,7 @@
 						  android:layout_width="match_parent"
 						  android:layout_height="wrap_content"
 						  android:layout_marginRight="16dp"
-						  android:hint="seconds"
+						  android:hint="@string/hint_seconds"
 						  android:inputType="number"
 						  android:maxLength="2"/>
 			</com.wrapp.floatlabelededittext.FloatLabeledEditText>
@@ -128,11 +114,10 @@
 					  android:layout_height="wrap_content"
 					  android:textAppearance="?android:textAppearanceMedium"
 					  android:layout_margin="8dp"
-					  android:text="Result of calculation:"/>
+					  android:text="@string/calculation_result"/>
 			<TextView android:id="@+id/resultTextView"
 					  android:layout_width="match_parent"
 					  android:layout_height="wrap_content"
-					  android:layout_below="@id/resultDescrTextView"
 					  android:layout_margin="8dp"
 					  android:textAppearance="?android:textAppearanceMedium"
 					  tools:text="123123"/>

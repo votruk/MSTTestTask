@@ -8,7 +8,6 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,16 +20,12 @@ import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * Created by KURT on 29.06.2015.
  */
-public class DrawingsFragment extends Fragment {
+public class GreyFragment extends Fragment {
 	private ImageView mAndroidImageView;
 	private int count = 0;
 	private boolean mIsCurrentImageColor;
@@ -44,29 +39,30 @@ public class DrawingsFragment extends Fragment {
 
 	private int mInterval = 5000;
 
-	long elapsed;
-	final static long INTERVAL = 100;
-	final static long TIMEOUT = 5000;
+	private long elapsed;
+	private final static long INTERVAL = 100;
+	private final static long TIMEOUT = 5000;
 
 	private boolean isRunnableRunning;
 
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_drawings, container, false);
+		View v = inflater.inflate(R.layout.fragment_grey, container, false);
 
-		mTimerTextView = (TextView) v.findViewById(R.id.drawingsTextView);
+		mTimerTextView = (TextView) v.findViewById(R.id.greyTextView);
 
-		mAndroidImageView = (ImageView) v.findViewById(R.id.drawingsImageView);
+		mAndroidImageView = (ImageView) v.findViewById(R.id.greyImageView);
 		mAndroidImageView.setImageResource(R.drawable.android);
 
 
 // Execute a runnable task as soon as possible
 
-		mHandler = new Handler();
+
 //		startRepeatingTask();
 		return v;
 	}
+
 
 	private final Runnable mStatusChecker = new Runnable() {
 		@Override
@@ -76,7 +72,6 @@ public class DrawingsFragment extends Fragment {
 			new ToGreyScale().execute(mIsCurrentImageColor);
 			Log.e("Handlers", "Called");
 			count++;
-			// Repeat this runnable code block again every 2 seconds
 
 			TimerTask task = new TimerTask() {
 				@Override
@@ -99,6 +94,7 @@ public class DrawingsFragment extends Fragment {
 	};
 
 	void startRepeatingTask() {
+
 		isRunnableRunning = true;
 		mStatusChecker.run();
 	}
@@ -119,12 +115,13 @@ public class DrawingsFragment extends Fragment {
 		});
 	}
 
-	
+
 
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser) {
+			mHandler = new Handler();
 			startRepeatingTask();
 		} else {
 			if (isRunnableRunning) {
@@ -138,14 +135,17 @@ public class DrawingsFragment extends Fragment {
 	}
 
 
-//	@Override
-//	public void onPause() {
-//		stopRepeatingTask();
-//		count = 0;
-//		elapsed = 0;
-//		mTimer.cancel();
-//		super.onPause();
-//	}
+	@Override
+	public void onPause() {
+		if (isRunnableRunning) {
+			stopRepeatingTask();
+			count = 0;
+			elapsed = 0;
+			mTimer.cancel();
+		}
+		super.onPause();
+
+	}
 
 	private class ToGreyScale extends AsyncTask<Boolean, Void, Bitmap> {
 

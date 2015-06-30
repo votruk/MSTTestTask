@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -15,7 +14,7 @@ import android.widget.TextView;
 public class TabsAdapter extends FragmentPagerAdapter {
 
 	final int PAGE_COUNT = 3;
-	private String tabTitles[] = new String[] { "YANDEX", "CALCULATION", "DRAWINGS" };
+	private String tabTitles[] = new String[] { "YANDEX", "CALC", "GREY" };
 	private Context context;
 
 	public TabsAdapter(FragmentManager fm, Context context) {
@@ -37,24 +36,20 @@ public class TabsAdapter extends FragmentPagerAdapter {
 			case 1:
 				return new CalculationFragment();
 			case 2:
-				return new DrawingsFragment();
+				return new GreyFragment();
 		}
-		return PageFragment.newInstance(position + 1);
+		return null;
 	}
 
 	@Override
 	public CharSequence getPageTitle(int position) {
-		// Generate title based on item position
 		return tabTitles[position];
 	}
 
 	public View getTabView(int position) {
-		// Given you have a custom layout in `res/layout/custom_tab.xml` with a TextView and ImageView
 		View v = LayoutInflater.from(context).inflate(R.layout.fragment_page, null);
 		TextView tv = (TextView) v.findViewById(R.id.simpleTextView);
 		tv.setText(tabTitles[position]);
-//		ImageView img = (ImageView) v.findViewById(R.id.imgView);
-//		img.setImageResource(imageResId[position]);
 		return v;
 	}
 }

@@ -3,4 +3,10 @@
 
 	<string name="hello_world">Hello world!</string>
 	<string name="action_settings">Settings</string>
+	<string name="calculation_result">Result of calculation:</string>
+	<string name="hint_seconds">seconds</string>
+	<string name="hint_1st">1\'st operand</string>
+	<string name="hint_2nd">2\'nd operand</string>
+	<string name="enter_delay">Enter delay of calculations:</string>
+	<string name="enter_two_numbers">Enter two numbers:</string>
 </resources>
