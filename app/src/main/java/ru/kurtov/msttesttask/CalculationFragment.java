@@ -63,7 +63,13 @@ public class CalculationFragment extends Fragment {
 		mCalculateResultFAB.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				View view = getActivity().getCurrentFocus();
+				if (view != null) {
+					InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+							Context.INPUT_METHOD_SERVICE);
+					imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
+				}
 				Intent intent = new Intent(getActivity(), DelayService.class);
 
 				mFirstOperandString = mFirstOperandET.getText().toString();
