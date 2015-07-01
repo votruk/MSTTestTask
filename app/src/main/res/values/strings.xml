@@ -1,7 +1,5 @@
 <resources>
 	<string name="app_name">MSTTestTask</string>
-
-	<string name="hello_world">Hello world!</string>
 	<string name="action_settings">Settings</string>
 	<string name="calculation_result">Result of calculation:</string>
 	<string name="calculation_result_short">Result:</string>
