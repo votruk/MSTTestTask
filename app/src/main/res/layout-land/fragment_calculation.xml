@@ -136,7 +136,7 @@
 		android:layout_alignParentBottom="true"
 		android:layout_alignParentRight="true"
 		android:layout_margin="20dp"
-		android:src="@drawable/check52"
+		android:src="@drawable/check_white"
 		app:elevation="4dp"
 		app:borderWidth="0dp"/>
 

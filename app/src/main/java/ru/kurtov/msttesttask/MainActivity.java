@@ -7,8 +7,6 @@ import android.support.v4.view.ViewPager;
 
 public class MainActivity extends FragmentActivity {
 
-	TabLayout tabLayout;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,6 +17,7 @@ public class MainActivity extends FragmentActivity {
 		viewPager.setAdapter(pagerAdapter);
 
 		TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+
 		tabLayout.setTabsFromPagerAdapter(pagerAdapter);
 		tabLayout.setupWithViewPager(viewPager);
 

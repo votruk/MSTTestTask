@@ -8,8 +8,10 @@
 	</style>
 
 	<style name="TabLayoutTheme" parent="Widget.Design.TabLayout">
-		<item name="tabIndicatorColor">#0000FF</item>
-
+		<item name="tabIndicatorColor">@color/tab_indicator_color</item>
+		<item name="android:textColor">#FFFFFF</item>
+		<item name="android:textColorPrimary">#FFFFFF</item>
+		<item name="android:background">@color/tab_color</item>
 	</style>
 
 </resources>

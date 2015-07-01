@@ -4,4 +4,5 @@
 	<color name="tab_indicator_color">#0000ff</color>
 	<color name="fab_color">#f44336</color>
 	<color name="fab_pressed_color">#b71c1c</color>
+	<color name="white">#ffffff</color>
 </resources>

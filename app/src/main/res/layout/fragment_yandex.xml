@@ -14,7 +14,7 @@
 				  android:layout_height="wrap_content"
 				  android:layout_alignParentLeft="true"
 				  android:layout_alignParentTop="true"
-				  android:textSize="24sp"
+				  android:textAppearance="?android:textAppearanceMedium"
 				  tools:text="TITLE"/>
 		<ProgressBar android:id="@+id/yandexProgressBar"
 					 android:layout_width="wrap_content"
