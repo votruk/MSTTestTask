@@ -22,7 +22,7 @@ import java.util.TimerTask;
 import java.util.concurrent.Future;
 
 public class GreyFragment extends Fragment {
-	private ImageView mAndroidImageView;
+	private ImageView mMilonovImageView;
 	private int count = 0;
 	private boolean mIsCurrentImageColor;
 
@@ -48,8 +48,8 @@ public class GreyFragment extends Fragment {
 
 		mTimerTextView = (TextView) v.findViewById(R.id.greyTextView);
 
-		mAndroidImageView = (ImageView) v.findViewById(R.id.greyImageView);
-		mAndroidImageView.setImageResource(R.drawable.android);
+		mMilonovImageView = (ImageView) v.findViewById(R.id.greyImageView);
+		mMilonovImageView.setImageResource(R.drawable.milonov);
 
 
 // Execute a runnable task as soon as possible
@@ -146,11 +146,11 @@ public class GreyFragment extends Fragment {
 		@Override
 		protected Bitmap doInBackground(Boolean... params) {
 			Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(),
-					R.drawable.android);
+					R.drawable.milonov);
 			if (params[0]) {
 				int width, height;
 				Bitmap bmpOriginal = BitmapFactory.decodeResource(getActivity().getResources(),
-						R.drawable.android);
+						R.drawable.milonov);
 				height = bmpOriginal.getHeight();
 				width = bmpOriginal.getWidth();
 
@@ -170,7 +170,7 @@ public class GreyFragment extends Fragment {
 		@Override
 		protected void onPostExecute(Bitmap bitmap) {
 			super.onPostExecute(bitmap);
-			mAndroidImageView.setImageBitmap(bitmap);
+			mMilonovImageView.setImageBitmap(bitmap);
 		}
 	}
 

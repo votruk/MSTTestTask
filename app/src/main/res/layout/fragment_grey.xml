@@ -7,12 +7,12 @@
 	<TextView android:id="@+id/greyTextView"
 			  android:layout_width="wrap_content"
 			  android:layout_height="wrap_content"
-		android:layout_marginBottom="32dp"
+		android:layout_marginBottom="16dp"
 		android:textAppearance="?android:textAppearanceLarge"/>
 	<ImageView android:id="@+id/greyImageView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:src="@drawable/android"
+		android:src="@drawable/milonov"
 		android:scaleType="fitCenter"/>
 
 </LinearLayout>
