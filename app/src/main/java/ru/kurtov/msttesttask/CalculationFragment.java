@@ -18,9 +18,6 @@ import android.widget.Toast;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-/**
- * Created by KURT on 29.06.2015.
- */
 public class CalculationFragment extends Fragment {
 
 	private MyReceiver myReceiver;
@@ -31,9 +28,9 @@ public class CalculationFragment extends Fragment {
 	private EditText mSecondOperandET;
 	private EditText mSecondsET;
 
-	private double firstOperand;
-	private double secondOperand;
-	private int seconds;
+	private String mFirstOperandString;
+	private String mSecondOperandString;
+	private int mSeconds;
 
 
 	@Override
@@ -42,9 +39,9 @@ public class CalculationFragment extends Fragment {
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction(DelayService.MY_ACTION);
 		getActivity().registerReceiver(myReceiver, intentFilter);
-		firstOperand = 0;
-		secondOperand = 0;
-		seconds = 0;
+		mFirstOperandString = "0";
+		mSecondOperandString = "0";
+		mSeconds = 0;
 		super.onStart();
 	}
 
@@ -66,34 +63,26 @@ public class CalculationFragment extends Fragment {
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(), DelayService.class);
 
-//				double firstOperand = Double.parseDouble(mFirstOperandET.getText().toString());
-//				double secondOperand = Double.parseDouble(mSecondOperandET.getText().toString());
-//				int seconds = Integer.parseInt(mSecondsET.getText().toString());
-
-				String firstOperandString = mFirstOperandET.getText().toString();
-				if (firstOperandString.matches("")) {
-					firstOperand = 0;
-				} else {
-					firstOperand = Double.parseDouble(firstOperandString);
+				mFirstOperandString = mFirstOperandET.getText().toString();
+				if (mFirstOperandString.matches("")) {
+					mFirstOperandString = "0";
 				}
-				String secondOperandString = mSecondOperandET.getText().toString();
 
-				if (secondOperandString.matches("")) {
-					secondOperand = 0;
-				} else {
-					secondOperand = Double.parseDouble(secondOperandString);
+				mSecondOperandString = mSecondOperandET.getText().toString();
+				if (mSecondOperandString.matches("")) {
+					mSecondOperandString = "0";
 				}
 
 				String secondsString = mSecondsET.getText().toString();
 				if (secondsString.matches("")) {
-					seconds = 0;
+					mSeconds = 0;
 				} else {
-					seconds = Integer.parseInt(secondsString);
+					mSeconds = Integer.parseInt(secondsString);
 				}
 
-				intent.putExtra("DELAY", seconds);
-				intent.putExtra("FIRST", firstOperand);
-				intent.putExtra("SECOND", secondOperand);
+				intent.putExtra("FIRST", mFirstOperandString);
+				intent.putExtra("SECOND", mSecondOperandString);
+				intent.putExtra("DELAY", mSeconds);
 
 				mFirstOperandET.setText("");
 				mSecondOperandET.setText("");
@@ -101,9 +90,8 @@ public class CalculationFragment extends Fragment {
 
 				mCalculateResultFAB.setClickable(false);
 
-				String textToShow = String.format(getString(R.string.seconds_to_show),
-									seconds);
-				Toast.makeText(getActivity(),textToShow, Toast.LENGTH_SHORT).show();
+				String textToShow = String.format(getString(R.string.seconds_to_show), mSeconds);
+				Toast.makeText(getActivity(), textToShow, Toast.LENGTH_SHORT).show();
 
 				getActivity().startService(intent);
 			}
@@ -116,19 +104,14 @@ public class CalculationFragment extends Fragment {
 
 		@Override
 		public void onReceive(Context arg0, Intent arg1) {
-			double datapassed = arg1.getDoubleExtra("DATAPASSED", 0);
-			double firstOp = arg1.getDoubleExtra("FIRST_OP", 0);
-			double secondOp = arg1.getDoubleExtra("SECOND_OP", 0);
+			String theResult = arg1.getStringExtra("DATAPASSED");
+			String firstOp = arg1.getStringExtra("FIRST_OP");
+			String secondOp = arg1.getStringExtra("SECOND_OP");
 
 			mCalculateResultFAB.setClickable(true);
 
-			String text = String.format("%s + %s = %s",
-					new BigDecimal(firstOp).setScale(6, RoundingMode.CEILING).stripTrailingZeros().toPlainString(),
-					new BigDecimal(secondOp).setScale(6, RoundingMode.CEILING).stripTrailingZeros().toPlainString(),
-					new BigDecimal(datapassed).setScale(6, RoundingMode.CEILING).stripTrailingZeros().toPlainString());
+			String text = String.format("%s + %s = %s",	firstOp, secondOp, theResult);
 			mResultTextView.setText(text);
-
-
 		}
 
 	}

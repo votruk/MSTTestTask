@@ -21,9 +21,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Future;
 
-/**
- * Created by KURT on 29.06.2015.
- */
 public class GreyFragment extends Fragment {
 	private ImageView mAndroidImageView;
 	private int count = 0;
@@ -150,7 +147,7 @@ public class GreyFragment extends Fragment {
 		protected Bitmap doInBackground(Boolean... params) {
 			Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(),
 					R.drawable.android);
-			if (params[0] == true) {
+			if (params[0]) {
 				int width, height;
 				Bitmap bmpOriginal = BitmapFactory.decodeResource(getActivity().getResources(),
 						R.drawable.android);
