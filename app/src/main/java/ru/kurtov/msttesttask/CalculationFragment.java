@@ -39,9 +39,11 @@ public class CalculationFragment extends Fragment {
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction(DelayService.MY_ACTION);
 		getActivity().registerReceiver(myReceiver, intentFilter);
+
 		mFirstOperandString = "0";
 		mSecondOperandString = "0";
 		mSeconds = 0;
+
 		super.onStart();
 	}
 
@@ -55,7 +57,6 @@ public class CalculationFragment extends Fragment {
 		mFirstOperandET = (EditText) v.findViewById(R.id.firstOperandEditText);
 		mSecondOperandET = (EditText) v.findViewById(R.id.secondOperandEditText);
 		mSecondsET = (EditText) v.findViewById(R.id.secondsEditText);
-
 
 		mCalculateResultFAB = (FloatingActionButton) v.findViewById(R.id.calculateResultFAB);
 		mCalculateResultFAB.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +111,7 @@ public class CalculationFragment extends Fragment {
 
 			mCalculateResultFAB.setClickable(true);
 
-			String text = String.format("%s + %s = %s",	firstOp, secondOp, theResult);
+			String text = String.format("%s + %s = %s", firstOp, secondOp, theResult);
 			mResultTextView.setText(text);
 		}
 
@@ -118,7 +119,6 @@ public class CalculationFragment extends Fragment {
 
 	@Override
 	public void onStop() {
-		// TODO Auto-generated method stub
 		getActivity().unregisterReceiver(myReceiver);
 		super.onStop();
 	}

@@ -15,13 +15,11 @@ public class DelayService extends Service {
 
 	@Override
 	public IBinder onBind(Intent arg0) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		// TODO Auto-generated method stub
 		mDelay = intent.getIntExtra("DELAY", 0);
 		mFirstOperand = intent.getStringExtra("FIRST");
 		mSecondOperand = intent.getStringExtra("SECOND");
@@ -31,29 +29,27 @@ public class DelayService extends Service {
 		return super.onStartCommand(intent, flags, startId);
 	}
 
-	public class MyThread extends Thread{
+	public class MyThread extends Thread {
 
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
-//			for(int i=0; i<10; i++){
-				try {
-					Thread.sleep(mDelay * 1000);
-					Intent intent = new Intent();
-					intent.setAction(MY_ACTION);
+			try {
+				Thread.sleep(mDelay * 1000);
 
-					BigDecimal result = new BigDecimal(mFirstOperand)
-							.add(new BigDecimal(mSecondOperand)).stripTrailingZeros();
-					intent.putExtra("DATAPASSED", result.toPlainString());
-					intent.putExtra("FIRST_OP", mFirstOperand);
-					intent.putExtra("SECOND_OP", mSecondOperand);
+				Intent intent = new Intent();
+				intent.setAction(MY_ACTION);
 
-					sendBroadcast(intent);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-//			}
+				BigDecimal result = new BigDecimal(mFirstOperand)
+						.add(new BigDecimal(mSecondOperand)).stripTrailingZeros();
+
+				intent.putExtra("DATAPASSED", result.toPlainString());
+				intent.putExtra("FIRST_OP", mFirstOperand);
+				intent.putExtra("SECOND_OP", mSecondOperand);
+
+				sendBroadcast(intent);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
 
 			stopSelf();
