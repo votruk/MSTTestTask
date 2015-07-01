@@ -31,17 +31,20 @@ public class CalculationFragment extends Fragment {
 	private EditText mSecondOperandET;
 	private EditText mSecondsET;
 
+	private double firstOperand;
+	private double secondOperand;
+	private int seconds;
+
+
 	@Override
 	public void onStart() {
-
 		myReceiver = new MyReceiver();
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction(DelayService.MY_ACTION);
 		getActivity().registerReceiver(myReceiver, intentFilter);
-
-		//Start our own service
-
-
+		firstOperand = 0;
+		secondOperand = 0;
+		seconds = 0;
 		super.onStart();
 	}
 
@@ -63,9 +66,30 @@ public class CalculationFragment extends Fragment {
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(), DelayService.class);
 
-				double firstOperand = Double.parseDouble(mFirstOperandET.getText().toString());
-				double secondOperand = Double.parseDouble(mSecondOperandET.getText().toString());
-				int seconds = Integer.parseInt(mSecondsET.getText().toString());
+//				double firstOperand = Double.parseDouble(mFirstOperandET.getText().toString());
+//				double secondOperand = Double.parseDouble(mSecondOperandET.getText().toString());
+//				int seconds = Integer.parseInt(mSecondsET.getText().toString());
+
+				String firstOperandString = mFirstOperandET.getText().toString();
+				if (firstOperandString.matches("")) {
+					firstOperand = 0;
+				} else {
+					firstOperand = Double.parseDouble(firstOperandString);
+				}
+				String secondOperandString = mSecondOperandET.getText().toString();
+
+				if (secondOperandString.matches("")) {
+					secondOperand = 0;
+				} else {
+					secondOperand = Double.parseDouble(secondOperandString);
+				}
+
+				String secondsString = mSecondsET.getText().toString();
+				if (secondsString.matches("")) {
+					seconds = 0;
+				} else {
+					seconds = Integer.parseInt(secondsString);
+				}
 
 				intent.putExtra("DELAY", seconds);
 				intent.putExtra("FIRST", firstOperand);
@@ -77,10 +101,8 @@ public class CalculationFragment extends Fragment {
 
 				mCalculateResultFAB.setClickable(false);
 
-				String textToShow = String.format("The result will be shown in %s second", seconds);
-				if (seconds > 1) {
-					textToShow = textToShow + "s";
-				}
+				String textToShow = String.format(getString(R.string.seconds_to_show),
+									seconds);
 				Toast.makeText(getActivity(),textToShow, Toast.LENGTH_SHORT).show();
 
 				getActivity().startService(intent);
@@ -94,8 +116,6 @@ public class CalculationFragment extends Fragment {
 
 		@Override
 		public void onReceive(Context arg0, Intent arg1) {
-			// TODO Auto-generated method stub
-
 			double datapassed = arg1.getDoubleExtra("DATAPASSED", 0);
 			double firstOp = arg1.getDoubleExtra("FIRST_OP", 0);
 			double secondOp = arg1.getDoubleExtra("SECOND_OP", 0);

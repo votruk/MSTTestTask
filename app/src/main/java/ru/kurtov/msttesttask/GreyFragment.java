@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +69,6 @@ public class GreyFragment extends Fragment {
 
 			mIsCurrentImageColor = count % 2 == 1;
 			new ToGreyScale().execute(mIsCurrentImageColor);
-			Log.e("Handlers", "Called");
 			count++;
 
 			TimerTask task = new TimerTask() {
@@ -83,7 +81,7 @@ public class GreyFragment extends Fragment {
 					}
 					int second = (int) (elapsed / 100 - ((elapsed / 100) % 10)) / 10;
 					int millSec = (int) (elapsed / 100 - second * 10);
-					displayText("Seconds elapsed: " + second + "." + millSec);
+					displayText(getString(R.string.seconds_elapsed) + " " + second + "." + millSec);
 				}
 			};
 			mTimer = new Timer();
@@ -130,7 +128,6 @@ public class GreyFragment extends Fragment {
 				elapsed = 0;
 				mTimer.cancel();
 			}
-
 		}
 	}
 

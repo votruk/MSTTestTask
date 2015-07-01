@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="calculation_result">Результат вычислений:</string>
+	<string name="hint_seconds">секунды</string>
+	<string name="hint_1st">1-ый операнд</string>
+	<string name="hint_2nd">2-ой операнд</string>
+	<string name="enter_delay">Введите задержку вычислений:</string>
+	<string name="enter_two_numbers">Введите два числа:</string>
+
+	<string name="seconds_to_show">Секунд до показа результата: %s</string>
+	<string name="download_source_code">Скачиваю исходный код Яндекса</string>
+	<string name="yandex">Исходный код Яндекса"</string>
+	<string name="seconds_elapsed">Прошло секунд: </string>
+</resources>

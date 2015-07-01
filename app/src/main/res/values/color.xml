@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="tab_color">#0bb879</color>
-	<color name="tab_indicator_color">#ffffff</color>
+	<color name="tab_indicator_color">#0000ff</color>
+	<color name="fab_color">#f44336</color>
+	<color name="fab_pressed_color">#b71c1c</color>
 </resources>

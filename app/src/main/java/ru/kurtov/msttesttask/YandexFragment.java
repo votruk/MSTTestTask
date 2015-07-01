@@ -42,13 +42,7 @@ public class YandexFragment extends Fragment {
 		mDownloadProgressBar = (ProgressBar) v.findViewById(R.id.yandexProgressBar);
 		mDownloadProgressBar.setVisibility(View.INVISIBLE);
 
-
-//		tv.setText("AAAAAAAAA");
-
 		new SourceCodeAsyncLoad().execute();
-
-
-
 
 		return v;
 	}
@@ -61,7 +55,7 @@ public class YandexFragment extends Fragment {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			mDownloadProgressBar.setVisibility(View.VISIBLE);
-			mTitleTextView.setText("Downloading Yandex source code");
+			mTitleTextView.setText(getString(R.string.download_source_code));
 		}
 
 		@Override
@@ -94,7 +88,7 @@ public class YandexFragment extends Fragment {
 		protected void onPostExecute(String s) {
 			super.onPostExecute(s);
 			mDownloadProgressBar.setVisibility(View.INVISIBLE);
-			mTitleTextView.setText("Yandex.ru source code");
+			mTitleTextView.setText(getString(R.string.yandex));
 			mSourceCodeTextView.setText(s);
 		}
 	}
