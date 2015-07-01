@@ -51,6 +51,7 @@ public class CalculationFragment extends Fragment {
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
 		View v = inflater.inflate(R.layout.fragment_calculation, container, false);
 
 		mResultTextView = (TextView) v.findViewById(R.id.resultTextView);
@@ -68,6 +69,12 @@ public class CalculationFragment extends Fragment {
 					InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
 							Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+////					mFirstOperandET.setFocusable(false);
+//					mFirstOperandET.setFocusable(true);
+////					mSecondOperandET.setFocusable(false);
+//					mSecondOperandET.setFocusable(true);
+////					mSecondsET.setFocusable(false);
+//					mSecondsET.setFocusable(true);
 
 				}
 				Intent intent = new Intent(getActivity(), DelayService.class);
@@ -98,6 +105,9 @@ public class CalculationFragment extends Fragment {
 				mSecondsET.setText("");
 
 				mCalculateResultFAB.setClickable(false);
+				mCalculateResultFAB.setFocusable(false);
+				mCalculateResultFAB.setEnabled(false);
+
 
 				String textToShow = String.format(getString(R.string.seconds_to_show), mSeconds);
 				Toast.makeText(getActivity(), textToShow, Toast.LENGTH_SHORT).show();
@@ -118,6 +128,9 @@ public class CalculationFragment extends Fragment {
 			String secondOp = arg1.getStringExtra("SECOND_OP");
 
 			mCalculateResultFAB.setClickable(true);
+			mCalculateResultFAB.setFocusable(true);
+			mCalculateResultFAB.setEnabled(true);
+
 
 			String text = String.format("%s + %s = %s", firstOp, secondOp, theResult);
 			mResultTextView.setText(text);
@@ -130,4 +143,6 @@ public class CalculationFragment extends Fragment {
 		getActivity().unregisterReceiver(myReceiver);
 		super.onStop();
 	}
+
+
 }

@@ -5,7 +5,7 @@
 	<string name="hint_seconds">секунды</string>
 	<string name="hint_1st">1-ый операнд</string>
 	<string name="hint_2nd">2-ой операнд</string>
-	<string name="enter_delay">Введите задержку вычислений:</string>
+	<string name="enter_delay">Введите задержку:</string>
 	<string name="enter_two_numbers">Введите два числа:</string>
 
 	<string name="seconds_to_show">Секунд до показа результата: %s</string>

@@ -8,7 +8,7 @@
 	<string name="hint_seconds">seconds</string>
 	<string name="hint_1st">1\'st operand</string>
 	<string name="hint_2nd">2\'nd operand</string>
-	<string name="enter_delay">Enter delay of calculations:</string>
+	<string name="enter_delay">Enter the delay:</string>
 	<string name="enter_two_numbers">Enter two numbers:</string>
 
 	<string name="seconds_to_show">Seconds to show the result: %s</string>
