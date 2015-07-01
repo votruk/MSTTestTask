@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			 xmlns:tools="http://schemas.android.com/tools"
-			 android:orientation="vertical"
-			 android:layout_width="match_parent"
-			 android:layout_height="match_parent"
-	android:padding="16dp">
-	<RelativeLayout android:layout_width="match_parent"
-				  android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		android:id="@+id/topRelativeLayout">
+			  xmlns:tools="http://schemas.android.com/tools"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:orientation="vertical"
+			  android:padding="16dp">
+	<RelativeLayout android:id="@+id/topRelativeLayout"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal">
 		<TextView android:id="@+id/yandexTitleTextView"
 				  android:layout_width="wrap_content"
 				  android:layout_height="wrap_content"
-				  android:layout_alignParentTop="true"
 				  android:layout_alignParentLeft="true"
+				  android:layout_alignParentTop="true"
 				  android:textSize="24sp"
-			tools:text="TITLE"/>
+				  tools:text="TITLE"/>
 		<ProgressBar android:id="@+id/yandexProgressBar"
 					 android:layout_width="wrap_content"
 					 android:layout_height="wrap_content"
@@ -25,11 +25,10 @@
 
 	<ScrollView android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:layout_gravity="center_horizontal|top"
-				android:paddingTop="16dp">
+				android:layout_gravity="center_horizontal|top">
 		<TextView android:id="@+id/yandexTextView"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"/>
+				  android:layout_width="match_parent"
+				  android:layout_height="wrap_content"/>
 	</ScrollView>
 
 

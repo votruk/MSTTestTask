@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="calculation_result">Результат вычислений:</string>
+	<string name="calculation_result_short">Результат:</string>
 	<string name="hint_seconds">секунды</string>
 	<string name="hint_1st">1-ый операнд</string>
 	<string name="hint_2nd">2-ой операнд</string>

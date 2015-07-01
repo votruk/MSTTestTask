@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +63,7 @@ public class CalculationFragment extends Fragment {
 		mCalculateResultFAB.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+
 				Intent intent = new Intent(getActivity(), DelayService.class);
 
 				mFirstOperandString = mFirstOperandET.getText().toString();
